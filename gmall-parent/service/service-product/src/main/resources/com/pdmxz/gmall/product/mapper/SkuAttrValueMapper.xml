@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pdmxz.gmall.product.mapper.SkuAttrValueMapper">
+
+<!--    @Override-->
+<!--    public List<SkuAttrValue> getAttrList(Long skuId) {-->
+<!--    return   skuAttrValueMapper.getAttrList(skuId);-->
+<!--    }-->
+    <resultMap id="getAttrListMap" type="SkuAttrValue">
+        <id column="id" property="id"></id>
+        <association property="baseAttrInfo" javaType="BaseAttrInfo">
+            <id column="vId" property="id"></id>
+        </association>
+        <association property="baseAttrValue" javaType="BaseAttrValue">
+            <id column="bId" property="id"></id>
+        </association>
+    </resultMap>
+    <select id="getAttrList" resultMap="getAttrListMap">
+        SELECT sav.`id`,bav.`id` bId,bav.`value_name`,bai.`id` vId ,bai.`attr_name` FROM sku_attr_value sav INNER JOIN base_attr_value bav	ON sav.`value_id` = bav.`id`
+                                                                                                            INNER JOIN base_attr_info bai ON bai.id = sav.`attr_id`
+        WHERE sav.`sku_id` = #{skuId}
+    </select>
+</mapper>

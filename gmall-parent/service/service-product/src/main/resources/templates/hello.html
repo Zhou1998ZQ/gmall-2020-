@@ -1,0 +1,15 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:text="${request}"></div>
+<div th:text="${session.session}"></div>
+<table>
+    <tr th:each="l:${list}">
+        <td th:text="${l}"></td>
+    </tr>
+</table>
+</body>
+</html>

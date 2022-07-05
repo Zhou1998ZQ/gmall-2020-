@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: service-cart
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.184.131:8848
+      config:
+        server-addr: 192.168.184.131:8848
+        file-extension: yml
+        namespace: 8de1e79b-4715-4922-bd1d-f7914f339aec
